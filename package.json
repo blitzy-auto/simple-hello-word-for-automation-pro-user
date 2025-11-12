@@ -1,0 +1,21 @@
+{
+  "name": "hello-world-nodejs",
+  "version": "1.0.0",
+  "description": "A simple Hello World Node.js HTTP server application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "hello-world",
+    "nodejs",
+    "http-server",
+    "example"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
