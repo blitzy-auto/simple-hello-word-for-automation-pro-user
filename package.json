@@ -11,7 +11,8 @@
     "hello-world",
     "nodejs",
     "http-server",
-    "example"
+    "example",
+    "health-check"
   ],
   "author": "",
   "license": "MIT",
