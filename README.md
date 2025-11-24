@@ -48,6 +48,50 @@ The application creates an HTTP server using Node.js's built-in `http` module. W
 
 You can modify these values in the `server.js` file if needed.
 
+## Health Check Endpoint
+
+The server includes a `/health` endpoint for monitoring and verification purposes.
+
+#### Accessing the Health Check
+
+While the server is running, you can check its health status:
+
+**Using a web browser:**
+```
+http://127.0.0.1:3000/health
+```
+
+**Using curl:**
+```bash
+curl http://localhost:3000/health
+```
+
+#### Response Format
+
+The health check endpoint returns a JSON response with the following structure:
+
+```json
+{
+  "status": "ok",
+  "uptime": 123.456,
+  "timestamp": "2024-11-24T12:34:56.789Z",
+  "message": "Server is running"
+}
+```
+
+**Response Fields:**
+- `status`: Health status indicator (always "ok" when server is responding)
+- `uptime`: Number of seconds the server has been running
+- `timestamp`: Current server time in ISO 8601 format
+- `message`: Human-readable status message
+
+#### Use Cases
+
+- **Development verification**: Quickly confirm the server started successfully
+- **Monitoring integration**: Connect to uptime monitoring services
+- **Load balancer health checks**: Configure AWS ALB, ELB, or other load balancers
+- **Container orchestration**: Use with Kubernetes liveness/readiness probes
+
 ## License
 
 This is a simple example application for learning purposes.
