@@ -33,6 +33,12 @@ No additional packages are required. This application uses only Node.js built-in
 
 6. You will see "Hello World!" displayed in your browser
 
+7. To test the health check endpoint, open your browser and visit:
+   ```
+   http://127.0.0.1:3000/health
+   ```
+   You will see a JSON response showing the server's health status.
+
 ## Health Check Endpoint
 
 The application includes a dedicated health check endpoint for monitoring and operational verification.
