@@ -1,7 +1,7 @@
 {
   "name": "hello-world-nodejs",
   "version": "1.0.0",
-  "description": "A simple Hello World Node.js HTTP server application",
+  "description": "A simple Hello World Node.js HTTP server application with health check endpoint",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

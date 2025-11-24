@@ -33,6 +33,41 @@ No additional packages are required. This application uses only Node.js built-in
 
 6. You will see "Hello World!" displayed in your browser
 
+## Health Check Endpoint
+
+The server includes a health check endpoint for monitoring and verification.
+
+### Accessing the Health Check
+
+Visit the health check endpoint:
+```
+http://127.0.0.1:3000/health_check
+```
+
+Or use curl from the command line:
+```bash
+curl http://127.0.0.1:3000/health_check
+```
+
+### Health Check Response
+
+The endpoint returns a JSON response with server health information:
+
+```json
+{
+  "status": "ok",
+  "uptime": 45.2,
+  "timestamp": "2024-11-24T17:45:30.123Z",
+  "message": "Service is running"
+}
+```
+
+**Response Fields:**
+- `status`: Server operational status ("ok" when healthy)
+- `uptime`: Number of seconds the server has been running
+- `timestamp`: ISO 8601 formatted timestamp of the health check
+- `message`: Human-readable status message
+
 ## Stopping the Server
 
 To stop the server, press `Ctrl+C` in the terminal where the application is running.
