@@ -37,9 +37,50 @@ No additional packages are required. This application uses only Node.js built-in
 
 To stop the server, press `Ctrl+C` in the terminal where the application is running.
 
+## Health Check Endpoint
+
+The server includes a health check endpoint to verify service availability and operational status.
+
+### Accessing the Health Check
+
+Visit the `/health` endpoint to receive service status information:
+
+```bash
+curl http://127.0.0.1:3000/health
+```
+
+### Health Check Response
+
+The endpoint returns a JSON response with the following structure:
+
+```json
+{
+  "status": "ok",
+  "uptime": 45.123,
+  "timestamp": "2024-01-15T10:30:00.000Z"
+}
+```
+
+**Response Fields:**
+- `status`: Service health status (always "ok" when server is responsive)
+- `uptime`: Number of seconds the server has been running
+- `timestamp`: Current server time in ISO 8601 UTC format
+
+### Use Cases
+
+The health check endpoint is useful for:
+- Verifying the server is running and responsive
+- Monitoring server uptime
+- Integration with load balancers and orchestration systems
+- Automated health monitoring and alerting
+
 ## How It Works
 
-The application creates an HTTP server using Node.js's built-in `http` module. When a request is received, the server responds with a status code of 200 and sends "Hello World!" as plain text.
+The application creates an HTTP server using Node.js's built-in `http` module. When a request is received, the server inspects the URL path:
+- Requests to `/health` receive a JSON response with service status information
+- All other requests receive "Hello World!" as plain text
+
+Both endpoints respond with a status code of 200 (OK).
 
 ## Configuration
 
