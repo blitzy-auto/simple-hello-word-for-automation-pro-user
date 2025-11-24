@@ -12,13 +12,13 @@ No additional packages are required. This application uses only Node.js built-in
 
 ## Usage
 
-1. Save the application code to a file named `server.js`
+1. Save the application code to a file named `Hello_World_Node.js`
 
-2. Open your terminal and navigate to the directory containing `server.js`
+2. Open your terminal and navigate to the directory containing `Hello_World_Node.js`
 
 3. Run the application:
    ```bash
-   node server.js
+   node Hello_World_Node.js
    ```
 
 4. You should see the message:
@@ -46,7 +46,47 @@ The application creates an HTTP server using Node.js's built-in `http` module. W
 - **Hostname**: 127.0.0.1 (localhost)
 - **Port**: 3000
 
-You can modify these values in the `server.js` file if needed.
+You can modify these values in the `Hello_World_Node.js` file if needed.
+
+## Health Check Endpoint
+
+The application includes a health check endpoint for monitoring and service verification.
+
+### Accessing the Health Check
+
+Visit the health endpoint:
+```
+http://127.0.0.1:3000/health
+```
+
+Or use curl:
+```bash
+curl http://127.0.0.1:3000/health
+```
+
+Alternative path:
+```bash
+curl http://127.0.0.1:3000/health_check
+```
+
+### Response Format
+
+The health check returns a JSON response:
+```json
+{
+  "status": "healthy",
+  "timestamp": "2025-11-24T12:00:00.000Z",
+  "service": "hello-world-nodejs"
+}
+```
+
+### Use Cases
+
+- Container orchestration health probes (Docker, Kubernetes)
+- Load balancer health checks
+- Monitoring system integration
+- Service availability verification
+- Automated testing and CI/CD pipelines
 
 ## License
 
