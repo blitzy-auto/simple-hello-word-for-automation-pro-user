@@ -52,7 +52,7 @@ No additional packages are required. This application uses only Node.js built-in
    }
    ```
 
-   - `status`: Always returns "ok" when server is running
+   - `status`: Always returns "ok" when the server is running
    - `uptime`: Number of seconds the server has been running
    - `timestamp`: Current server time in ISO 8601 format
 
