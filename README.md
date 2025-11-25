@@ -61,7 +61,7 @@ curl http://127.0.0.1:3000/health
 - `uptime`: Number of seconds the server has been running
 - `timestamp`: Current server time in ISO 8601 format
 
-This endpoint can be used by monitoring tools, load balancers, or manual verification.
+This endpoint can be used by monitoring tools, load balancers, or manual verification to confirm the service is operational.
 
 ## Stopping the Server
 
