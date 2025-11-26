@@ -61,6 +61,12 @@ The health check endpoint returns a JSON response:
 - **timestamp**: ISO 8601 formatted timestamp of the response
 - **service**: Service identifier (`"hello-world-nodejs"`)
 
+### Use Cases
+
+- **Monitoring**: Verify the service is operational and responding to requests
+- **Container Orchestration**: Configure Kubernetes liveness and readiness probes to check application health
+- **Load Balancer Health Checks**: Allow load balancers to verify backend availability before routing traffic
+
 ## Stopping the Server
 
 To stop the server, press `Ctrl+C` in the terminal where the application is running.
