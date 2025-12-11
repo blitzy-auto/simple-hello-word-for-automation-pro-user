@@ -41,13 +41,6 @@ To stop the server, press `Ctrl+C` in the terminal where the application is runn
 
 The application creates an HTTP server using Node.js's built-in `http` module. When a request is received, the server responds with a status code of 200 and sends "Hello World!" as plain text.
 
-## Configuration
-
-- **Hostname**: 127.0.0.1 (localhost)
-- **Port**: 3000
-
-You can modify these values in the `Hello_World_Node.js` file if needed.
-
 ## Endpoints
 
 The server exposes the following endpoints:
@@ -65,6 +58,7 @@ The server exposes the following endpoints:
 - **Response:** JSON object with server health status
 
 **Example Response:**
+
 ```json
 {
   "status": "ok",
@@ -74,14 +68,27 @@ The server exposes the following endpoints:
 ```
 
 **Response Fields:**
-- `status`: Server health status (always "ok" when server is running)
-- `uptime`: Server uptime in seconds since startup
-- `timestamp`: Current server time in ISO 8601 format
 
-**Testing the Health Check:**
+| Field | Type | Description |
+|-------|------|-------------|
+| `status` | string | Server health status (always "ok" when server is running) |
+| `uptime` | number | Server uptime in seconds since startup |
+| `timestamp` | string | Current server time in ISO 8601 format |
+
+### Testing the Health Check
+
+To test the health check endpoint, use the following curl command:
+
 ```bash
 curl http://127.0.0.1:3000/health_check
 ```
+
+## Configuration
+
+- **Hostname**: 127.0.0.1 (localhost)
+- **Port**: 3000
+
+You can modify these values in the `Hello_World_Node.js` file if needed.
 
 ## License
 
