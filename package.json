@@ -2,10 +2,10 @@
   "name": "hello-world-nodejs",
   "version": "1.0.0",
   "description": "A simple Hello World Node.js HTTP server application",
-  "main": "server.js",
+  "main": "Hello_World_Node.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "start": "node Hello_World_Node.js",
+    "dev": "node Hello_World_Node.js"
   },
   "keywords": [
     "hello-world",

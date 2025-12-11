@@ -12,13 +12,13 @@ No additional packages are required. This application uses only Node.js built-in
 
 ## Usage
 
-1. Save the application code to a file named `server.js`
+1. Save the application code to a file named `Hello_World_Node.js`
 
-2. Open your terminal and navigate to the directory containing `server.js`
+2. Open your terminal and navigate to the directory containing `Hello_World_Node.js`
 
 3. Run the application:
    ```bash
-   node server.js
+   node Hello_World_Node.js
    ```
 
 4. You should see the message:
@@ -46,7 +46,42 @@ The application creates an HTTP server using Node.js's built-in `http` module. W
 - **Hostname**: 127.0.0.1 (localhost)
 - **Port**: 3000
 
-You can modify these values in the `server.js` file if needed.
+You can modify these values in the `Hello_World_Node.js` file if needed.
+
+## Endpoints
+
+The server exposes the following endpoints:
+
+### Root Endpoint (/)
+
+- **URL:** `http://127.0.0.1:3000/`
+- **Method:** Any HTTP method
+- **Response:** Plain text "Hello World!"
+
+### Health Check Endpoint (/health_check)
+
+- **URL:** `http://127.0.0.1:3000/health_check`
+- **Method:** Any HTTP method
+- **Response:** JSON object with server health status
+
+**Example Response:**
+```json
+{
+  "status": "ok",
+  "uptime": 123.456,
+  "timestamp": "2024-01-01T12:00:00.000Z"
+}
+```
+
+**Response Fields:**
+- `status`: Server health status (always "ok" when server is running)
+- `uptime`: Server uptime in seconds since startup
+- `timestamp`: Current server time in ISO 8601 format
+
+**Testing the Health Check:**
+```bash
+curl http://127.0.0.1:3000/health_check
+```
 
 ## License
 
