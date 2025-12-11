@@ -33,6 +33,12 @@ No additional packages are required. This application uses only Node.js built-in
 
 6. You will see "Hello World!" displayed in your browser
 
+7. To check server health, visit or use curl:
+   ```bash
+   curl http://127.0.0.1:3000/health
+   ```
+   This returns a JSON response with server status, uptime, and timestamp
+
 ## Stopping the Server
 
 To stop the server, press `Ctrl+C` in the terminal where the application is running.
