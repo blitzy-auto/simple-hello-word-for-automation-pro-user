@@ -7,8 +7,22 @@ const port = 3000;
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World!\n');
+  
+  // Health check endpoint for service verification
+  if (req.url === '/health_check') {
+    const healthData = {
+      status: 'healthy',
+      uptime: process.uptime(),
+      timestamp: Date.now(),
+      message: 'Service is running correctly'
+    };
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify(healthData));
+  } else {
+    // Original Hello World response for all other paths
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Hello World!\n');
+  }
 });
 
 server.listen(port, hostname, () => {
