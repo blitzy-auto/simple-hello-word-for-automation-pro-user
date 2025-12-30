@@ -43,13 +43,16 @@ The application creates an HTTP server using Node.js's built-in `http` module. W
 
 ## Health Check
 
-The application includes a health check endpoint for monitoring service status.
+The application includes a health check endpoint for monitoring service status. This endpoint allows operators, monitoring systems, and load balancers to programmatically verify that the service is running correctly.
 
-### Endpoint
+### Endpoint Details
 
-- **URL**: `/health`
-- **Method**: GET (or any HTTP method)
-- **Response**: JSON
+| Property | Value |
+|----------|-------|
+| **URL** | `/health` |
+| **Method** | GET (or any HTTP method) |
+| **Response** | JSON |
+| **Content-Type** | `application/json` |
 
 ### Example Usage
 
@@ -72,10 +75,24 @@ curl http://127.0.0.1:3000/health
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `status` | string | Health status of the service (always "healthy" when responding) |
-| `timestamp` | string | Current server time in ISO 8601 format |
-| `uptime` | number | Seconds since the server process started |
-| `service` | string | Service identifier |
+| `status` | string | Current health status of the service. Returns `"healthy"` when the service is operational. |
+| `timestamp` | string | Current server time in ISO 8601 format (e.g., `"2024-01-15T10:30:00.000Z"`). |
+| `uptime` | number | Number of seconds the server has been running since it started. |
+| `service` | string | Service identifier, always `"hello-world-nodejs"` for this application. |
+
+### Backward Compatibility
+
+The health check endpoint is additive and does not affect existing functionality. The root path (`/`) and all other paths continue to return the "Hello World!" response as before:
+
+```bash
+# Root path still returns Hello World!
+curl http://127.0.0.1:3000/
+# Output: Hello World!
+
+# Any other path also returns Hello World!
+curl http://127.0.0.1:3000/anything
+# Output: Hello World!
+```
 
 ## Configuration
 
