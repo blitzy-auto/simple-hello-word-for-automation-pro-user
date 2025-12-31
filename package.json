@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node Hello_World_Node.js",
     "dev": "node Hello_World_Node.js",
-    "health": "curl -s http://127.0.0.1:3000/health"
+    "health": "curl -s http://127.0.0.1:3000/health | json_pp"
   },
   "keywords": [
     "hello-world",
