@@ -1,6 +1,6 @@
 # Hello World Node.js Application
 
-A simple Node.js HTTP server that displays "Hello World!" in the browser and provides a health check endpoint.
+A simple Node.js HTTP server that displays "Hello World!" in the browser and provides a health check endpoint for service monitoring.
 
 ## Prerequisites
 
@@ -21,11 +21,6 @@ No additional packages are required. This application uses only Node.js built-in
    node Hello_World_Node.js
    ```
 
-   Or using npm:
-   ```bash
-   npm start
-   ```
-
 4. You should see the message:
    ```
    Server running at http://127.0.0.1:3000/
@@ -38,25 +33,48 @@ No additional packages are required. This application uses only Node.js built-in
 
 6. You will see "Hello World!" displayed in your browser
 
+## Stopping the Server
+
+To stop the server, press `Ctrl+C` in the terminal where the application is running.
+
+## How It Works
+
+The application creates an HTTP server using Node.js's built-in `http` module. The server implements URL routing to handle different request paths:
+
+- **Health Check Route (`/health_check`)**: Returns a JSON response containing service health information including status, uptime, and timestamp.
+- **Default Route (all other paths)**: Responds with a status code of 200 and sends "Hello World!" as plain text.
+
 ## Health Check Endpoint
 
-The application provides a health check endpoint to easily verify that the service is running correctly.
+The application includes a health check endpoint for easy verification that the service is running correctly.
 
-**Endpoint:** `/health_check`
+### Endpoint Details
 
-**Method:** GET
+- **Path**: `/health_check`
+- **Method**: GET (responds to all HTTP methods)
+- **Content-Type**: `application/json`
+- **Status Code**: `200 OK`
 
-**Response:** JSON with the following fields:
-- `status`: Health status indicator (always "healthy" when service is running)
-- `uptime`: Server uptime in seconds
-- `timestamp`: Current timestamp in ISO 8601 format
+### Usage
 
-**Example Request:**
+To check the health of the service, make a request to the health check endpoint:
+
 ```bash
 curl http://127.0.0.1:3000/health_check
 ```
 
-**Example Response:**
+### Response Format
+
+The health check endpoint returns a JSON object with the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `status` | string | Health status indicator (always `"healthy"` when service is running) |
+| `uptime` | number | Server uptime in seconds since the Node.js process started |
+| `timestamp` | string | Current server time in ISO 8601 format |
+
+### Sample Response
+
 ```json
 {
   "status": "healthy",
@@ -64,17 +82,6 @@ curl http://127.0.0.1:3000/health_check
   "timestamp": "2024-01-01T12:00:00.000Z"
 }
 ```
-
-## Stopping the Server
-
-To stop the server, press `Ctrl+C` in the terminal where the application is running.
-
-## How It Works
-
-The application creates an HTTP server using Node.js's built-in `http` module. When a request is received, the server checks the URL path:
-
-- **`/health_check`**: Returns a JSON response with health metrics (status, uptime, timestamp)
-- **All other paths**: Returns "Hello World!" as plain text
 
 ## Configuration
 
