@@ -1,6 +1,6 @@
 # Hello World Node.js Application
 
-A simple Node.js HTTP server that displays "Hello World!" in the browser.
+A simple Node.js HTTP server that displays "Hello World!" in the browser and provides a health check endpoint.
 
 ## Prerequisites
 
@@ -12,13 +12,18 @@ No additional packages are required. This application uses only Node.js built-in
 
 ## Usage
 
-1. Save the application code to a file named `server.js`
+1. Save the application code to a file named `Hello_World_Node.js`
 
-2. Open your terminal and navigate to the directory containing `server.js`
+2. Open your terminal and navigate to the directory containing `Hello_World_Node.js`
 
 3. Run the application:
    ```bash
-   node server.js
+   node Hello_World_Node.js
+   ```
+
+   Or using npm:
+   ```bash
+   npm start
    ```
 
 4. You should see the message:
@@ -33,20 +38,50 @@ No additional packages are required. This application uses only Node.js built-in
 
 6. You will see "Hello World!" displayed in your browser
 
+## Health Check Endpoint
+
+The application provides a health check endpoint to easily verify that the service is running correctly.
+
+**Endpoint:** `/health_check`
+
+**Method:** GET
+
+**Response:** JSON with the following fields:
+- `status`: Health status indicator (always "healthy" when service is running)
+- `uptime`: Server uptime in seconds
+- `timestamp`: Current timestamp in ISO 8601 format
+
+**Example Request:**
+```bash
+curl http://127.0.0.1:3000/health_check
+```
+
+**Example Response:**
+```json
+{
+  "status": "healthy",
+  "uptime": 123.456,
+  "timestamp": "2024-01-01T12:00:00.000Z"
+}
+```
+
 ## Stopping the Server
 
 To stop the server, press `Ctrl+C` in the terminal where the application is running.
 
 ## How It Works
 
-The application creates an HTTP server using Node.js's built-in `http` module. When a request is received, the server responds with a status code of 200 and sends "Hello World!" as plain text.
+The application creates an HTTP server using Node.js's built-in `http` module. When a request is received, the server checks the URL path:
+
+- **`/health_check`**: Returns a JSON response with health metrics (status, uptime, timestamp)
+- **All other paths**: Returns "Hello World!" as plain text
 
 ## Configuration
 
 - **Hostname**: 127.0.0.1 (localhost)
 - **Port**: 3000
 
-You can modify these values in the `server.js` file if needed.
+You can modify these values in the `Hello_World_Node.js` file if needed.
 
 ## License
 
