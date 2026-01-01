@@ -37,9 +37,38 @@ No additional packages are required. This application uses only Node.js built-in
 
 To stop the server, press `Ctrl+C` in the terminal where the application is running.
 
+## Health Check Endpoint
+
+The server includes a health check endpoint for monitoring:
+
+- **URL:** http://127.0.0.1:3000/health
+- **Method:** GET
+- **Response:** JSON
+
+### Example Response
+
+```json
+{
+  "status": "ok",
+  "uptime": 123.456,
+  "timestamp": "2024-01-01T12:00:00.000Z"
+}
+```
+
+### Response Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| status | string | Service health status ("ok") |
+| uptime | number | Server uptime in seconds |
+| timestamp | string | Current server time (ISO 8601) |
+
 ## How It Works
 
-The application creates an HTTP server using Node.js's built-in `http` module. When a request is received, the server responds with a status code of 200 and sends "Hello World!" as plain text.
+The application creates an HTTP server using Node.js's built-in `http` module. When a request is received:
+
+1. If the URL path is `/health`, the server responds with a JSON health status
+2. For all other paths, the server responds with "Hello World!" as plain text
 
 ## Configuration
 
