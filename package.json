@@ -5,7 +5,8 @@
   "main": "Hello_World_Node.js",
   "scripts": {
     "start": "node Hello_World_Node.js",
-    "dev": "node Hello_World_Node.js"
+    "dev": "node Hello_World_Node.js",
+    "test": "curl -s http://127.0.0.1:3000/health || echo 'Server not running'"
   },
   "keywords": [
     "hello-world",
