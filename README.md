@@ -12,13 +12,13 @@ No additional packages are required. This application uses only Node.js built-in
 
 ## Usage
 
-1. Save the application code to a file named `server.js`
+1. Save the application code to a file named `Hello_World_Node.js`
 
-2. Open your terminal and navigate to the directory containing `server.js`
+2. Open your terminal and navigate to the directory containing `Hello_World_Node.js`
 
 3. Run the application:
    ```bash
-   node server.js
+   node Hello_World_Node.js
    ```
 
 4. You should see the message:
@@ -41,12 +41,59 @@ To stop the server, press `Ctrl+C` in the terminal where the application is runn
 
 The application creates an HTTP server using Node.js's built-in `http` module. When a request is received, the server responds with a status code of 200 and sends "Hello World!" as plain text.
 
+## Health Check Endpoint
+
+The server provides a health check endpoint that allows clients (developers, monitoring systems, or load balancers) to verify the service is running correctly.
+
+### Endpoint Details
+
+- **URL**: `/health`
+- **Method**: GET (all HTTP methods accepted)
+- **Content-Type**: `application/json`
+
+### Usage
+
+To check if the server is running and healthy:
+
+```bash
+curl http://127.0.0.1:3000/health
+```
+
+### Response Format
+
+The health endpoint returns a JSON response with the following structure:
+
+```json
+{
+  "status": "healthy",
+  "timestamp": "2024-01-01T00:00:00.000Z"
+}
+```
+
+**Response Fields:**
+- `status`: String indicating the server health status ("healthy")
+- `timestamp`: ISO 8601 formatted timestamp of when the health check was performed
+
+### Example Response
+
+```bash
+$ curl http://127.0.0.1:3000/health
+{"status":"healthy","timestamp":"2024-01-15T10:30:00.123Z"}
+```
+
+### Use Cases
+
+- **Development**: Quickly verify the server is running and responsive
+- **Monitoring Systems**: Automated health monitoring and alerting
+- **Load Balancers**: Determine if the server instance should receive traffic
+- **Container Orchestration**: Health probes for Kubernetes or Docker deployments
+
 ## Configuration
 
 - **Hostname**: 127.0.0.1 (localhost)
 - **Port**: 3000
 
-You can modify these values in the `server.js` file if needed.
+You can modify these values in the `Hello_World_Node.js` file if needed.
 
 ## License
 
