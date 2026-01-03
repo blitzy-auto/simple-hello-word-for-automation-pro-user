@@ -43,7 +43,7 @@ The application creates an HTTP server using Node.js's built-in `http` module. W
 
 ## Health Check Endpoint
 
-The server includes a health check endpoint for service verification, useful for monitoring systems and load balancers.
+The server provides a health check endpoint that allows clients (developers, monitoring systems, or load balancers) to verify the service is running correctly.
 
 ### Endpoint Details
 
@@ -80,6 +80,13 @@ The health endpoint returns a JSON response with the following structure:
 $ curl http://127.0.0.1:3000/health
 {"status":"healthy","timestamp":"2024-01-15T10:30:00.123Z"}
 ```
+
+### Use Cases
+
+- **Development**: Quickly verify the server is running and responsive
+- **Monitoring Systems**: Automated health monitoring and alerting
+- **Load Balancers**: Determine if the server instance should receive traffic
+- **Container Orchestration**: Health probes for Kubernetes or Docker deployments
 
 ## Configuration
 
